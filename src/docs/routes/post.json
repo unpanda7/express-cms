@@ -1,0 +1,230 @@
+{
+  "/post": {
+    "get": {
+      "tags": ["Posts"],
+      "summary": "Get post list",
+      "parameters": [
+        {
+          "in": "query",
+          "name": "page",
+          "schema": { "type": "integer" }
+        },
+        {
+          "in": "query",
+          "name": "pageSize",
+          "schema": { "type": "integer" }
+        },
+        {
+          "in": "query",
+          "name": "search",
+          "schema": { "type": "string" }
+        },
+        {
+          "in": "query",
+          "name": "published",
+          "schema": { "type": "boolean" }
+        },
+        {
+          "in": "query",
+          "name": "authorId",
+          "schema": { "type": "integer" }
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "Success",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "total": { "type": "integer" },
+                  "items": {
+                    "type": "array",
+                    "items": { "$ref": "#/components/schemas/Post" }
+                  },
+                  "page": { "type": "integer" },
+                  "pageSize": { "type": "integer" }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "post": {
+      "tags": ["Posts"],
+      "summary": "Create new post",
+      "security": [{ "BearerAuth": [] }],
+      "requestBody": {
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "required": ["title"],
+              "properties": {
+                "title": { "type": "string" },
+                "content": { "type": "string" },
+                "published": { "type": "boolean" }
+              }
+            }
+          }
+        }
+      },
+      "responses": {
+        "200": {
+          "description": "Success",
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/Post" }
+            }
+          }
+        }
+      }
+    }
+  },
+  "/post/{id}": {
+    "get": {
+      "tags": ["Posts"],
+      "summary": "Get post details",
+      "parameters": [
+        {
+          "in": "path",
+          "name": "id",
+          "required": true,
+          "schema": { "type": "integer" }
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "Success",
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/Post" }
+            }
+          }
+        },
+        "404": {
+          "description": "Post not found"
+        }
+      }
+    },
+    "put": {
+      "tags": ["Posts"],
+      "summary": "Update post",
+      "security": [{ "BearerAuth": [] }],
+      "parameters": [
+        {
+          "in": "path",
+          "name": "id",
+          "required": true,
+          "schema": { "type": "integer" }
+        }
+      ],
+      "requestBody": {
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "title": { "type": "string" },
+                "content": { "type": "string" },
+                "published": { "type": "boolean" }
+              }
+            }
+          }
+        }
+      },
+      "responses": {
+        "200": {
+          "description": "Success",
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/Post" }
+            }
+          }
+        }
+      }
+    },
+    "delete": {
+      "tags": ["Posts"],
+      "summary": "Delete post",
+      "security": [{ "BearerAuth": [] }],
+      "parameters": [
+        {
+          "in": "path",
+          "name": "id",
+          "required": true,
+          "schema": { "type": "integer" }
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "Success",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "message": { "type": "string" }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "/post/{id}/publish": {
+    "put": {
+      "tags": ["Posts"],
+      "summary": "Publish post",
+      "security": [{ "BearerAuth": [] }],
+      "parameters": [
+        {
+          "in": "path",
+          "name": "id",
+          "required": true,
+          "schema": { "type": "integer" }
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "Success",
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/Post" }
+            }
+          }
+        }
+      }
+    }
+  },
+  "/post/{id}/unpublish": {
+    "put": {
+      "tags": ["Posts"],
+      "summary": "Unpublish post",
+      "security": [{ "BearerAuth": [] }],
+      "parameters": [
+        {
+          "in": "path",
+          "name": "id",
+          "required": true,
+          "schema": { "type": "integer" }
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "Success",
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/Post" }
+            }
+          }
+        }
+      }
+    }
+  }
+}

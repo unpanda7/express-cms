@@ -14,24 +14,29 @@ datasource db {
 }
 
 model User {
-  id        Int    @id @default(autoincrement())
-  email     String @unique
+  id        Int       @id @default(autoincrement())
+  email     String    @unique
   username  String
-  phone     String @unique
+  phone     String    @unique
   password  String
   avatar    String?
   sex       String?
+  status    Boolean   @default(true)  // 用户状态
+  remark    String?   // 备注
   posts     Post[]
   roles     UserRole[]
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
 }
 
 model Role {
   id          Int       @id @default(autoincrement())
   name        String    @unique
   description String?
+  sort        Int       @default(0)  // 排序
+  remark      String?   // 备注
   permissions Permission[]
+  menus       MenuRole[]  // 关联菜单
   users       UserRole[]
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
@@ -67,4 +72,31 @@ model Post {
   authorId Int
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+}
+
+model Menu {
+  id          Int       @id @default(autoincrement())
+  name        String    // 菜单名称
+  code        String    @unique  // 功能编码
+  path        String?   // 路径
+  parentId    Int?      // 父级ID
+  parent      Menu?     @relation("MenuToMenu", fields: [parentId], references: [id])
+  children    Menu[]    @relation("MenuToMenu")
+  sort        Int?      @default(0)  // 排序
+  remark      String?   // 备注
+  roles       MenuRole[]
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+model MenuRole {
+  id        Int      @id @default(autoincrement())
+  menu      Menu     @relation(fields: [menuId], references: [id])
+  menuId    Int
+  role      Role     @relation(fields: [roleId], references: [id])
+  roleId    Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([menuId, roleId])
 }

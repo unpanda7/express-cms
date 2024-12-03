@@ -1,0 +1,324 @@
+{
+  "/management/users": {
+    "get": {
+      "tags": ["Users"],
+      "summary": "Get user list",
+      "security": [{ "BearerAuth": [] }],
+      "parameters": [
+        {
+          "in": "query",
+          "name": "page",
+          "schema": {
+            "type": "integer"
+          },
+          "description": "Page number"
+        },
+        {
+          "in": "query",
+          "name": "pageSize",
+          "schema": {
+            "type": "integer"
+          },
+          "description": "Items per page"
+        },
+        {
+          "in": "query",
+          "name": "search",
+          "schema": {
+            "type": "string"
+          },
+          "description": "Search term"
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "Success",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "total": {
+                    "type": "integer"
+                  },
+                  "items": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/User"
+                    }
+                  },
+                  "page": {
+                    "type": "integer"
+                  },
+                  "pageSize": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "/management/users/{id}": {
+    "put": {
+      "tags": ["Users"],
+      "summary": "Update user",
+      "security": [{ "BearerAuth": [] }],
+      "parameters": [
+        {
+          "in": "path",
+          "name": "id",
+          "required": true,
+          "schema": { "type": "integer" }
+        }
+      ],
+      "requestBody": {
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": { "$ref": "#/components/schemas/UpdateUserInput" }
+          }
+        }
+      },
+      "responses": {
+        "200": {
+          "description": "Success",
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/User" }
+            }
+          }
+        }
+      }
+    },
+    "delete": {
+      "tags": ["Users"],
+      "summary": "Delete user",
+      "security": [{ "BearerAuth": [] }],
+      "parameters": [
+        {
+          "in": "path",
+          "name": "id",
+          "required": true,
+          "schema": { "type": "integer" }
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "Success",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "message": { "type": "string" }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "/management/users/{id}/roles": {
+    "post": {
+      "tags": ["Users"],
+      "summary": "Assign roles to user",
+      "security": [{ "BearerAuth": [] }],
+      "parameters": [
+        {
+          "in": "path",
+          "name": "id",
+          "required": true,
+          "schema": { "type": "integer" }
+        }
+      ],
+      "requestBody": {
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": { "$ref": "#/components/schemas/AssignRoleInput" }
+          }
+        }
+      },
+      "responses": {
+        "200": {
+          "description": "Success",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "message": { "type": "string" }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "/management/roles": {
+    "get": {
+      "tags": ["Roles"],
+      "summary": "Get role list",
+      "security": [{ "BearerAuth": [] }],
+      "parameters": [
+        {
+          "in": "query",
+          "name": "page",
+          "schema": { "type": "integer" }
+        },
+        {
+          "in": "query",
+          "name": "pageSize",
+          "schema": { "type": "integer" }
+        },
+        {
+          "in": "query",
+          "name": "search",
+          "schema": { "type": "string" }
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "Success",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "total": { "type": "integer" },
+                  "items": {
+                    "type": "array",
+                    "items": { "$ref": "#/components/schemas/Role" }
+                  },
+                  "page": { "type": "integer" },
+                  "pageSize": { "type": "integer" }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "post": {
+      "tags": ["Roles"],
+      "summary": "Create new role",
+      "security": [{ "BearerAuth": [] }],
+      "requestBody": {
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": { "$ref": "#/components/schemas/CreateRoleInput" }
+          }
+        }
+      },
+      "responses": {
+        "200": {
+          "description": "Success",
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/Role" }
+            }
+          }
+        }
+      }
+    }
+  },
+  "/management/menus": {
+    "get": {
+      "tags": ["Menus"],
+      "summary": "Get menu list",
+      "security": [{ "BearerAuth": [] }],
+      "parameters": [
+        {
+          "in": "query",
+          "name": "page",
+          "schema": { "type": "integer" }
+        },
+        {
+          "in": "query",
+          "name": "pageSize",
+          "schema": { "type": "integer" }
+        },
+        {
+          "in": "query",
+          "name": "search",
+          "schema": { "type": "string" }
+        },
+        {
+          "in": "query",
+          "name": "parentId",
+          "schema": { "type": "integer" }
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "Success",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "total": { "type": "integer" },
+                  "items": {
+                    "type": "array",
+                    "items": { "$ref": "#/components/schemas/Menu" }
+                  },
+                  "page": { "type": "integer" },
+                  "pageSize": { "type": "integer" }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "post": {
+      "tags": ["Menus"],
+      "summary": "Create new menu",
+      "security": [{ "BearerAuth": [] }],
+      "requestBody": {
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": { "$ref": "#/components/schemas/CreateMenuInput" }
+          }
+        }
+      },
+      "responses": {
+        "200": {
+          "description": "Success",
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/Menu" }
+            }
+          }
+        }
+      }
+    }
+  },
+  "/management/menus/tree": {
+    "get": {
+      "tags": ["Menus"],
+      "summary": "Get menu tree structure",
+      "security": [{ "BearerAuth": [] }],
+      "responses": {
+        "200": {
+          "description": "Success",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": { "$ref": "#/components/schemas/Menu" }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

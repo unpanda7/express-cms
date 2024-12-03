@@ -1,43 +1,45 @@
-import { PrismaClient } from '@prisma/client';
+import { PrismaClient } from '@prisma/client'
+import { fakerZH_CN as faker } from '@faker-js/faker'
+import Logger from '../src/lib/logger'
 
-const prisma = new PrismaClient();
+const prisma = new PrismaClient()
 
 async function main() {
-  // 创建权限
-  const createPost = await prisma.permission.create({
-    data: { name: 'create:post', description: 'Can create posts' },
-  });
-  const deletePost = await prisma.permission.create({
-    data: { name: 'delete:post', description: 'Can delete posts' },
-  });
+    const user = await prisma.user.findFirst({
+        where: {
+            phone: '18674704903',
+        },
+    })
+    console.log(user?.id)
+    if (!user?.id) {
+        return
+    }
 
-  // 创建角色
-  await prisma.role.create({
-    data: {
-      name: 'user',
-      description: 'Regular user',
-      permissions: {
-        connect: [{ id: createPost.id }],
-      },
-    },
-  });
+    const fakerPosts: any[] = []
+    for (let i = 0; i < 10; i++) {
+        fakerPosts.push({
+          title: faker.word.words(5),
+          content: faker.lorem.paragraphs(3),
+            published: faker.datatype.boolean(),
+            authorId: user.id,
+        })
+    }
+    console.log(fakerPosts)
+    await prisma.post.createMany({
+        data: fakerPosts,
+    })
+    Logger.info(`Created ${fakerPosts.length} faker posts`)
 
-  await prisma.role.create({
-    data: {
-      name: 'admin',
-      description: 'Administrator',
-      permissions: {
-        connect: [{ id: createPost.id }, { id: deletePost.id }],
-      },
-    },
-  });
+    // delete all posts
+    // await prisma.post.deleteMany()
+    // Logger.info(`Deleted all posts`)
 }
 
 main()
-  .catch((e) => {
-    console.error(e);
-    process.exit(1);
-  })
-  .finally(async () => {
-    await prisma.$disconnect();
-  });
+    .catch((e) => {
+        console.error(e)
+        process.exit(1)
+    })
+    .finally(async () => {
+        await prisma.$disconnect()
+    })

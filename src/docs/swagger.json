@@ -1,0 +1,196 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Management System API",
+    "version": "1.0.0",
+    "description": "API documentation for the management system"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000",
+      "description": "Development server"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    },
+    "schemas": {
+      "User": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "email": {
+            "type": "string",
+            "format": "email"
+          },
+          "username": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "string"
+          },
+          "status": {
+            "type": "boolean"
+          },
+          "remark": {
+            "type": "string"
+          },
+          "roles": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/UserRole"
+            }
+          }
+        },
+        "required": ["email", "username", "phone"]
+      },
+      "Role": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "sort": {
+            "type": "integer"
+          },
+          "remark": {
+            "type": "string"
+          },
+          "permissions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Permission"
+            }
+          }
+        },
+        "required": ["name"]
+      },
+      "Permission": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          }
+        },
+        "required": ["name"]
+      },
+      "Menu": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "code": {
+            "type": "string"
+          },
+          "parentId": {
+            "type": "integer"
+          },
+          "sort": {
+            "type": "integer"
+          },
+          "remark": {
+            "type": "string"
+          }
+        },
+        "required": ["name", "code"]
+      },
+      "Post": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "integer" },
+          "title": { "type": "string" },
+          "content": { "type": "string" },
+          "published": { "type": "boolean" },
+          "authorId": { "type": "integer" }
+        }
+      },
+      "UserRole": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "integer" },
+          "userId": { "type": "integer" },
+          "roleId": { "type": "integer" },
+          "role": { "$ref": "#/components/schemas/Role" }
+        }
+      },
+      "UpdateUserInput": {
+        "type": "object",
+        "properties": {
+          "username": { "type": "string" },
+          "email": {
+            "type": "string",
+            "format": "email"
+          },
+          "phone": {
+            "type": "string",
+            "pattern": "^[0-9]{11}$"
+          },
+          "status": { "type": "boolean" },
+          "remark": { "type": "string" }
+        }
+      },
+      "AssignRoleInput": {
+        "type": "object",
+        "required": ["roleIds"],
+        "properties": {
+          "roleIds": {
+            "type": "array",
+            "items": { "type": "integer" }
+          }
+        }
+      },
+      "CreateRoleInput": {
+        "type": "object",
+        "required": ["name"],
+        "properties": {
+          "name": { "type": "string" },
+          "description": { "type": "string" },
+          "sort": { "type": "integer" },
+          "remark": { "type": "string" },
+          "permissionIds": {
+            "type": "array",
+            "items": { "type": "integer" }
+          },
+          "menuIds": {
+            "type": "array",
+            "items": { "type": "integer" }
+          }
+        }
+      },
+      "CreateMenuInput": {
+        "type": "object",
+        "required": ["name", "code"],
+        "properties": {
+          "name": { "type": "string" },
+          "code": { "type": "string" },
+          "parentId": { "type": "integer" },
+          "sort": { "type": "integer" },
+          "remark": { "type": "string" }
+        }
+      }
+    }
+  }
+}

@@ -13,6 +13,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@faker-js/faker": "^9.2.0",
     "@prisma/client": "^6.0.0",
     "@types/morgan": "^1.9.9",
     "bcrypt": "^5.1.1",
@@ -20,6 +21,7 @@
     "jsonwebtoken": "^9.0.2",
     "morgan": "^1.10.0",
     "prisma": "^6.0.0",
+    "swagger-ui-express": "^5.0.1",
     "winston": "^3.17.0",
     "zod": "^3.23.8"
   },

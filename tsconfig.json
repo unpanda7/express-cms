@@ -14,7 +14,8 @@
     "forceConsistentCasingInFileNames": true,
     "baseUrl": ".",  // Add this line
     "paths": {       // Add this section
-      "src/*": ["src/*"]
+      "src/*": ["src/*"],
+      "@/*": ["src/*"]
     }
   },
   "include": ["src/**/*"],
