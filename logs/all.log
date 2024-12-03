@@ -1,0 +1,39 @@
+2024-12-02 22:37:49:3749 [31merror[39m: [31mThis is an error log[39m
+2024-12-02 22:37:49:3749 [33mwarn[39m: [33mThis is a warn log[39m
+2024-12-02 22:37:49:3749 [32minfo[39m: [32mThis is a info log[39m
+2024-12-02 22:37:49:3749 [35mhttp[39m: [35mThis is a http log[39m
+2024-12-02 22:37:49:3749 [37mdebug[39m: [37mThis is a debug log[39m
+2024-12-02 22:39:32:3932 [31merror[39m: [31mThis is an error log[39m
+2024-12-02 22:39:32:3932 [33mwarn[39m: [33mThis is a warn log[39m
+2024-12-02 22:39:32:3932 [32minfo[39m: [32mThis is a info log[39m
+2024-12-02 22:39:32:3932 [35mhttp[39m: [35mThis is a http log[39m
+2024-12-02 22:39:32:3932 [37mdebug[39m: [37mThis is a debug log[39m
+2024-12-02 22:39:32:3932 [35mhttp[39m: [35mGET /logger 304 - - 4.847 ms[39m
+[35m[39m
+2024-12-02 23:17:35:1735 [32minfo[39m: [32mServer is running on port 3000[39m
+2024-12-03 09:08:39:839 [32minfo[39m: [32mServer is running on port 3000[39m
+2024-12-03 09:08:42:842 [35mhttp[39m: [35mPOST /auth/login 401 28 - 92.116 ms[39m
+[35m[39m
+2024-12-03 09:11:47:1147 [35mhttp[39m: [35mPOST /auth/login 401 28 - 32.478 ms[39m
+[35m[39m
+2024-12-03 09:11:49:1149 [35mhttp[39m: [35mPOST /auth/register 400 873 - 87.657 ms[39m
+[35m[39m
+2024-12-03 09:12:49:1249 [35mhttp[39m: [35mPOST /auth/register 200 437 - 229.497 ms[39m
+[35m[39m
+2024-12-03 09:14:03:143 [32minfo[39m: [32mServer is running on port 3000[39m
+2024-12-03 09:16:26:1626 [32minfo[39m: [32mServer is running on port 3000[39m
+2024-12-03 10:28:53:2853 [32minfo[39m: [32mServer is running on port 3000[39m
+2024-12-03 13:03:46:346 [35mhttp[39m: [35mPOST /auth/register 200 466 - 331.503 ms[39m
+[35m[39m
+2024-12-03 13:06:43:643 [32minfo[39m: [32mServer is running on port 3000[39m
+2024-12-03 13:08:17:817 [32minfo[39m: [32mServer is running on port 3000[39m
+2024-12-03 13:13:16:1316 [32minfo[39m: [32mServer is running on port 3000[39m
+2024-12-03 13:13:18:1318 [35mhttp[39m: [35mPOST /auth/login 400 101 - 14.263 ms[39m
+[35m[39m
+2024-12-03 13:13:24:1324 [35mhttp[39m: [35mPOST /auth/login 401 1505 - 79.881 ms[39m
+[35m[39m
+2024-12-03 13:14:15:1415 [32minfo[39m: [32mServer is running on port 3000[39m
+2024-12-03 13:14:18:1418 [35mhttp[39m: [35mPOST /auth/login 401 47 - 163.523 ms[39m
+[35m[39m
+2024-12-03 13:14:32:1432 [35mhttp[39m: [35mPOST /auth/login 200 883 - 121.786 ms[39m
+[35m[39m
