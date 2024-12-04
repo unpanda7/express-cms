@@ -48,7 +48,7 @@ router.delete('/:id',
 router.get('/:id', async (req, res) => {
   const post = await postService.findPostById(parseInt(req.params.id));
   if (!post) {
-    return res.status(404).json({ message: 'Post not found' });
+    return res.status(404).json({ message: '不存在该文章' });
   }
   res.json(post);
 });

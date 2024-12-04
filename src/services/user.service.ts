@@ -89,6 +89,7 @@ export class UserService {
         OR: [
           { email: identifier },
           { username: identifier },
+          { phone: identifier },
         ],
       },
       include: {

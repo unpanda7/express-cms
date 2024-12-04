@@ -153,3 +153,64 @@
 2024-12-03 17:45:35:4535 [32minfo[39m: [32mServer is running on port 3000[39m
 2024-12-03 17:46:03:463 [35mhttp[39m: [35mGET /post 200 7109 - 102.944 ms[39m
 [35m[39m
+2024-12-04 11:23:53:2353 [32minfo[39m: [32mServer is running on port 3000[39m
+2024-12-04 11:24:07:247 [35mhttp[39m: [35mGET /post 304 - - 132.930 ms[39m
+[35m[39m
+2024-12-04 11:24:27:2427 [35mhttp[39m: [35mPOST /post 401 31 - 12.011 ms[39m
+[35m[39m
+2024-12-04 11:24:59:2459 [35mhttp[39m: [35mPOST /auth/login 401 45 - 52.064 ms[39m
+[35m[39m
+2024-12-04 11:25:45:2545 [32minfo[39m: [32mServer is running on port 3000[39m
+2024-12-04 11:26:09:269 [35mhttp[39m: [35mPOST /auth/login 401 47 - 246.510 ms[39m
+[35m[39m
+2024-12-04 11:26:20:2620 [35mhttp[39m: [35mPOST /auth/login 200 3316 - 135.549 ms[39m
+[35m[39m
+2024-12-04 11:26:50:2650 [35mhttp[39m: [35mPOST /post 200 239 - 127.710 ms[39m
+[35m[39m
+2024-12-04 11:29:25:2925 [32minfo[39m: [32mServer is running on port 3000[39m
+2024-12-04 11:29:31:2931 [35mhttp[39m: [35mPOST /post 200 241 - 133.640 ms[39m
+[35m[39m
+2024-12-04 11:29:55:2955 [32minfo[39m: [32mServer is running on port 3000[39m
+2024-12-04 11:30:00:300 [35mhttp[39m: [35mPOST /post 200 241 - 208.735 ms[39m
+[35m[39m
+2024-12-04 11:30:13:3013 [32minfo[39m: [32mServer is running on port 3000[39m
+2024-12-04 11:30:15:3015 [35mhttp[39m: [35mPOST /post 200 241 - 138.232 ms[39m
+[35m[39m
+2024-12-04 11:31:48:3148 [32minfo[39m: [32mServer is running on port 3000[39m
+2024-12-04 11:31:52:3152 [32minfo[39m: [32mcreatePost postData: {}[39m
+2024-12-04 11:31:52:3152 [35mhttp[39m: [35mPOST /post 200 241 - 151.298 ms[39m
+[35m[39m
+2024-12-04 11:32:21:3221 [32minfo[39m: [32mServer is running on port 3000[39m
+2024-12-04 11:32:27:3227 [32minfo[39m: [32mcreatePost author: undefined[39m
+2024-12-04 11:32:27:3227 [32minfo[39m: [32mcreatePost post: {}[39m
+2024-12-04 11:32:27:3227 [32minfo[39m: [32mcreatePost postData: {}[39m
+2024-12-04 11:32:27:3227 [35mhttp[39m: [35mPOST /post 200 241 - 91.623 ms[39m
+[35m[39m
+2024-12-04 11:32:48:3248 [32minfo[39m: [32mServer is running on port 3000[39m
+2024-12-04 11:32:51:3251 [32minfo[39m: [32mcreatePost author: {"id":1,"username":"unpanda7","email":"unpanda7@163.com"}[39m
+2024-12-04 11:32:51:3251 [32minfo[39m: [32mcreatePost post: {"id":527,"title":"这是测试标题1","content":"内容说法1","published":true,"authorId":1,"createdAt":"2024-12-04T03:32:51.129Z","updatedAt":"2024-12-04T03:32:51.129Z","author":{"id":1,"username":"unpanda7","email":"unpanda7@163.com"}}[39m
+2024-12-04 11:32:51:3251 [32minfo[39m: [32mcreatePost postData: {"id":527,"title":"这是测试标题1","content":"内容说法1","published":true,"authorId":1,"createdAt":"2024-12-04T03:32:51.129Z","updatedAt":"2024-12-04T03:32:51.129Z"}[39m
+2024-12-04 11:32:51:3251 [35mhttp[39m: [35mPOST /post 200 174 - 138.213 ms[39m
+[35m[39m
+2024-12-04 11:33:04:334 [32minfo[39m: [32mServer is running on port 3000[39m
+2024-12-04 11:33:05:335 [32minfo[39m: [32mcreatePost author: {"id":1,"username":"unpanda7","email":"unpanda7@163.com"}[39m
+2024-12-04 11:33:05:335 [32minfo[39m: [32mcreatePost post: {"id":528,"title":"这是测试标题1","content":"内容说法1","published":true,"authorId":1,"createdAt":"2024-12-04T03:33:05.829Z","updatedAt":"2024-12-04T03:33:05.829Z","author":{"id":1,"username":"unpanda7","email":"unpanda7@163.com"}}[39m
+2024-12-04 11:33:05:335 [32minfo[39m: [32mcreatePost postData: {"id":528,"title":"这是测试标题1","content":"内容说法1","published":true,"authorId":1,"createdAt":"2024-12-04T03:33:05.829Z","updatedAt":"2024-12-04T03:33:05.829Z"}[39m
+2024-12-04 11:33:05:335 [35mhttp[39m: [35mPOST /post 200 196 - 133.048 ms[39m
+[35m[39m
+2024-12-04 11:33:13:3313 [32minfo[39m: [32mServer is running on port 3000[39m
+2024-12-04 11:33:22:3322 [32minfo[39m: [32mServer is running on port 3000[39m
+2024-12-04 11:33:37:3337 [35mhttp[39m: [35mGET /post/12 404 28 - 54.128 ms[39m
+[35m[39m
+2024-12-04 11:33:44:3344 [35mhttp[39m: [35mGET /post/1 404 28 - 13.411 ms[39m
+[35m[39m
+2024-12-04 11:33:52:3352 [35mhttp[39m: [35mGET /post/100 404 28 - 17.116 ms[39m
+[35m[39m
+2024-12-04 11:34:23:3423 [32minfo[39m: [32mServer is running on port 3000[39m
+2024-12-04 11:34:32:3432 [32minfo[39m: [32mServer is running on port 3000[39m
+2024-12-04 11:34:53:3453 [35mhttp[39m: [35mGET /post/500 200 332 - 57.308 ms[39m
+[35m[39m
+2024-12-04 11:35:12:3512 [35mhttp[39m: [35mGET /post/510 200 323 - 21.831 ms[39m
+[35m[39m
+2024-12-04 11:35:36:3536 [32minfo[39m: [32mServer is running on port 3000[39m
+2024-12-04 11:38:30:3830 [32minfo[39m: [32mServer is running on port 3000[39m

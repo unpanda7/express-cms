@@ -1,5 +1,6 @@
 import { PrismaClient } from '@prisma/client';
 import { PaginationParams } from '../types/common';
+import Logger from '../lib/logger';
 
 const prisma = new PrismaClient();
 
@@ -56,7 +57,7 @@ export class PostService {
     published?: boolean;
     authorId: number;
   }) {
-    return prisma.post.create({
+    const post = await prisma.post.create({
       data,
       include: {
         author: {
@@ -68,6 +69,13 @@ export class PostService {
         }
       }
     });
+
+    const { author, ...postData } = post;
+
+    return {
+      ...postData,
+      username: author.username
+    };
   }
 
   async updatePost(id: number, data: {
@@ -75,7 +83,7 @@ export class PostService {
     content?: string;
     published?: boolean;
   }) {
-    return prisma.post.update({
+    const post = await prisma.post.update({
       where: { id },
       data,
       include: {
@@ -88,6 +96,13 @@ export class PostService {
         }
       }
     });
+
+    const { author, ...postData } = post;
+
+    return {
+      ...postData,
+      username: author.username
+    };
   }
 
   async deletePost(id: number) {
@@ -97,18 +112,23 @@ export class PostService {
   }
 
   async findPostById(id: number) {
-    return prisma.post.findUnique({
+    const post = await prisma.post.findUnique({
       where: { id },
       include: {
         author: {
           select: {
-            id: true,
-            username: true,
-            email: true
+            username: true
           }
         }
       }
     });
+
+    const { author, ...postData } = post;
+
+    return {
+      ...postData,
+      username: author.username
+    };
   }
 
   async publishPost(id: number) {
